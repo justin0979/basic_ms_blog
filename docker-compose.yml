@@ -1,0 +1,36 @@
+version: "2.4"
+services:
+  client:
+    build:
+      context: ./client
+      target: dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - client_node_modules:/usr/app/node_modules
+      - ./client:/usr/app
+
+  posts:
+    build:
+      context: ./posts
+      target: dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - posts_node_modules:/usr/app/node_modules
+      - ./posts:/usr/app
+
+  comments:
+    build:
+      context: ./comments
+      target: dev
+    ports:
+      - "4001:4001"
+    volumes:
+      - comments_node_modules:/usr/app/node_modules
+      - ./comments:/usr/app
+
+volumes:
+  client_node_modules:
+  posts_node_modules:
+  comments_node_modules:
