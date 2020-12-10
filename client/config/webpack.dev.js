@@ -8,6 +8,11 @@ module.exports = merge(commonConfig, {
     publicPath: "",
   },
   mode: "development",
+  externals: {
+    axios: {
+      amd: "axios",
+    },
+  },
   devServer: {
     port: 3000,
     host: "0.0.0.0", // add for docker
