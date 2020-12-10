@@ -1,36 +1,7 @@
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: inherit;
-}
+@import "base/base";
+@import "base/typography";
 
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
+@import "components/btn";
 
-body {
-  font-size: 1.6rem;
-}
-
-.app {
-  height: 80vh;
-  color: #cccbbb;
-  margin: 10rem;
-  background-image: linear-gradient(to left, #222, #888);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn {
-  padding: 0.7rem 1rem;
-}
-
-::selection {
-  background-color: #ffeedd;
-  color: green;
-}
+@import "layout/form";
+@import "layout/layout";

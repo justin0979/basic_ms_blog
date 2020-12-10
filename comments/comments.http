@@ -7,4 +7,18 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:4001/posts/124/comments 
+Content-Type: application/json
+
+{
+  "content": "New from 124"
+}
+
+###
+
 GET http://localhost:4001/posts/123/comments
+
+###
+
+GET http://localhost:4001/posts/124/comments 
+Content-Type: application/json

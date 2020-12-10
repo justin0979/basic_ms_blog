@@ -2,7 +2,7 @@
 # It is only for practice and reference.
 
 FROM node:10-slim as base
-WORKDIR /use/app
+WORKDIR /usr/app
 # Change ownership from root to node for this directory down.
 RUN chown -R node:node .
 COPY package*.json ./

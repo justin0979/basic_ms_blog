@@ -1,0 +1,10 @@
+.form {
+  &-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-group > label {
+    font-size: 1.3rem;
+  }
+}
