@@ -28,3 +28,30 @@ GET http://localhost:4000/posts
 Be sure to have the server running.
 
 Directly above the `POST` and `GET` there will be a small link (`Send Request`) which you click on to post or get data.
+
+## Issues
+
+After starting the client and attempting to submit a post by clicking the "Submit" button, get TypeError:
+
+```sh
+Uncaught (in promise)
+TypeError: Cannot read property 'post' of undefined
+    at _callee$ (PostCreate.jsx:37)
+    at tryCatch (runtime.js:45)
+    ...
+```
+
+Adding `console.log(title)` before `await axios.post()` outputs the title content, after the `axoios.post()`, no output due to TypeError.
+
+So far, have tried the following:
+
+<ul>
+<li>Added <code>network_mode: host</code> to docker-compose.yml services and received
+<br />
+<code>
+ERROR: for blog_client_1 Cannot start service client:  network brigder not found
+</code>
+</li>
+
+<li>changed `devServer.host: "0.0.0.0"</li>
+</ul>

@@ -19,7 +19,7 @@ module.exports = merge(commonConfig, {
     hot: true,
     historyApiFallback: {
       index: "index.html",
-    }, // use for routing
+    },
     overlay: true,
     writeToDisk: true,
     //public: "devconfig:80", // change devconfig if needed to whatever app is named (e.g. client:80), added with nginx use
