@@ -3,9 +3,6 @@ module.exports = {
     [
       "@babel/env",
       {
-        targets: {
-          node: "10",
-        },
         useBuiltIns: "usage",
         corejs: {
           version: 3,
@@ -18,7 +15,6 @@ module.exports = {
   plugins: [
     "@babel/transform-runtime",
     "@babel/proposal-class-properties",
-    "@babel/transform-async-to-generator",
     [
       "module-resolver",
       {

@@ -54,4 +54,12 @@ ERROR: for blog_client_1 Cannot start service client:  network brigder not found
 </li>
 
 <li>changed `devServer.host: "0.0.0.0"</li>
+<li>installed @babel/plugin-transform-async-to-generator and updated babel.config.js</li>
+<li>installed @babel/plugin-proposals-proposal-async-generator-functions and updated babel.config.js alone and with above plugin</li>
+<li>installed babel-polyfill and @babel/plugin-transform-async-to-generator and updated babel.config.js</li>
+<li>installed $babel/polyfill and @babel/plugin-transform-async-to-generator and updated babel.config.js</li>
+<li>added<code>
+devServer: proxy: { "/posts": "http://localhost:4000"}</code> and <code>
+devServer: proxy: { "/posts": "http://0.0.0.0:4000"}
+</code></li>
 </ul>
