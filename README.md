@@ -29,9 +29,13 @@ Be sure to have the server running.
 
 Directly above the `POST` and `GET` there will be a small link (`Send Request`) which you click on to post or get data.
 
+## Styling is "custom"
+
+Bootstrap is used in the lectures, but I opted to use the same class names but practice my scss by implementing my own styling.
+
 # Issues
 
-## Axios post undefined
+## Axios post undefined [Solved]
 
 ### Axios post undefined solution
 
