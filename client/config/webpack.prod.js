@@ -8,7 +8,7 @@ module.exports = merge(commonConfig, {
   entry: ["./src"],
   output: {
     filename: "bundle.[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     publicPath: "", // without /, kept getting 404 errors when refreshing with redux-form
     // with /, running `npm run build` would not find bundle or any other file
   },
