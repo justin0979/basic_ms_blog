@@ -4,9 +4,18 @@
   border-style: none;
   margin: 1rem;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &-primary {
     background-color: lighten(rgba(38, 98, 209, 0.952), 7%);
-    color: #fff;
+    color: #eeecfc;
     font-weight: 700;
+
+    &:hover {
+      background-color: darken(skyblue, 20%);
+      color: #fff;
+    }
   }
 }
