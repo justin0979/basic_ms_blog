@@ -14,5 +14,5 @@ COPY --chown=node:node . .
 FROM base as dev 
 RUN npm i --only=development
 COPY --chown=node:node . .
-EXPOSE 3001
+EXPOSE 4001
 CMD ["npm", "start"]

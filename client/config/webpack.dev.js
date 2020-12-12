@@ -4,26 +4,23 @@ const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common");
 
 module.exports = merge(commonConfig, {
-  output: {
-    publicPath: "",
-  },
   mode: "development",
-  externals: {
-    axios: {
-      amd: "axios",
-    },
-  },
   devServer: {
     port: 3000,
     host: "0.0.0.0", // add for docker
     hot: true,
     historyApiFallback: {
       index: "index.html",
-    }, // use for routing
+    },
     overlay: true,
     writeToDisk: true,
     //public: "devconfig:80", // change devconfig if needed to whatever app is named (e.g. client:80), added with nginx use
     //proxy: [{ context: ["/auth/google", "/api"], target: "http://localhost:5000" }] <--- use if working with backend, paths are just examples.
+    proxy: {
+      "/posts": {
+        target: "http://localhost:4000",
+      },
+    },
   },
   module: {
     rules: [

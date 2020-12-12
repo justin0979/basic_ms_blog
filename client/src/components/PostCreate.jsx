@@ -4,13 +4,25 @@ import axios from "axios";
 const PostCreate = () => {
   const [title, setTitle] = useState("");
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+      await axios.post("http://localhost:4000/posts", {
+        title,
+      });
+
+      // reset title to empty out input to make sure request
+      // was issued successfully.
+      setTitle("");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <div>
-      <form onSubmit={onSubmit} action="POST">
+      <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="">Title</label>
           <input
