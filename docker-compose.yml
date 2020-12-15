@@ -30,7 +30,29 @@ services:
       - comments_node_modules:/usr/app/node_modules
       - ./comments:/usr/app
 
+  query:
+    build:
+      context: ./query
+      target: dev
+    ports:
+      - 4002:4002
+    volumes:
+      - query_node_modules:/usr/app/node_modules
+      - ./query:/usr/app
+
+  events:
+    build:
+      context: ./events
+      target: dev
+    ports:
+      - 4003:4003
+    volumes:
+      - events_node_modules:/usr/app/node_modules
+      - ./events:/usr/app
+
 volumes:
   client_node_modules:
   posts_node_modules:
   comments_node_modules:
+  query_node_modules:
+  events_node_modules:
