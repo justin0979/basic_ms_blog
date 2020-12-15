@@ -85,3 +85,23 @@ devServer: proxy: { "/posts": "http://localhost:4000"}</code> and <code>
 devServer: proxy: { "/posts": "http://0.0.0.0:4000"}
 </code></li>
 </ul>
+
+## UnhandledPromiseRejectionWarning for posting posts and comments
+
+Get `connect ECONNREFUSED 127.0..1:4005` from post submission and comment submission
+
+Event-bus' nodemon crashes when posts and comments are successfully created (not with docker, only worked from individual terminals).
+
+<ul>
+  <li>Add <code>network_mode: host</code> to each service in docker-compose.yml and each service shows:<br/>
+  <code>
+    ERROR: for client "host" network_mode is incompatible with port_bindings<br />
+    ERROR: for posts "host" network_mode is incompatible with port_bindings<br />
+    ...
+  </code>
+  </li>
+  <li>Tried updating version from <code>2.4</code> to <code>3</code>, same error as above</li>
+  <li>
+    Removed <code>network_mode: host</code> and removed async/await from event-bus index.js, still got first list item's above error.
+  </li>
+</ul>

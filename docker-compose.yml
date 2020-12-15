@@ -29,6 +29,7 @@ services:
     volumes:
       - comments_node_modules:/usr/app/node_modules
       - ./comments:/usr/app
+
   event-bus:
     build:
       context: ./event-bus
