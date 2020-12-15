@@ -9,5 +9,5 @@ COPY --chown=node:node . .
 FROM base as dev
 RUN npm install --only=development
 COPY --chown=node:node . .
-EXPOSE 4003
+EXPOSE 4005
 CMD ["npm", "start"]

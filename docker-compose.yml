@@ -29,6 +29,15 @@ services:
     volumes:
       - comments_node_modules:/usr/app/node_modules
       - ./comments:/usr/app
+  event-bus:
+    build:
+      context: ./event-bus
+      target: dev
+    ports:
+      - 4005:4005
+    volumes:
+      - event-bus_node_modules:/usr/app/node_modules
+      - ./event-bus:/usr/app
 
   query:
     build:
@@ -40,19 +49,9 @@ services:
       - query_node_modules:/usr/app/node_modules
       - ./query:/usr/app
 
-  events:
-    build:
-      context: ./events
-      target: dev
-    ports:
-      - 4003:4003
-    volumes:
-      - events_node_modules:/usr/app/node_modules
-      - ./events:/usr/app
-
 volumes:
   client_node_modules:
   posts_node_modules:
   comments_node_modules:
   query_node_modules:
-  events_node_modules:
+  event-bus_node_modules:
