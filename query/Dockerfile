@@ -1,4 +1,4 @@
-FROM node:10-slim as base
+FROM node:14-slim as base
 WORKDIR /usr/app
 RUN chown -R node:node .
 COPY package*.json ./
@@ -9,5 +9,5 @@ COPY --chown=node:node . .
 FROM base as dev
 RUN npm install --only=development
 COPY --chown=node:node . .
-EXPOSE 4003
+EXPOSE 4002
 CMD ["npm", "start"]

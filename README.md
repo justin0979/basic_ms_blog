@@ -88,7 +88,7 @@ devServer: proxy: { "/posts": "http://0.0.0.0:4000"}
 
 ## UnhandledPromiseRejectionWarning for posting posts and comments
 
-Get `connect ECONNREFUSED 127.0..1:4005` from post submission and comment submission
+Get `connect ECONNREFUSED 127.0.0.1:4005` from post submission and comment submission
 
 Event-bus' nodemon crashes when posts and comments are successfully created (not with docker, only worked from individual terminals).
 
@@ -104,4 +104,16 @@ Event-bus' nodemon crashes when posts and comments are successfully created (not
   <li>
     Removed <code>network_mode: host</code> and removed async/await from event-bus index.js, still got first list item's above error.
   </li>
+  <li>upgrade in all Dockerfiles node:10-slim to 14</li>
+  <li><p>added to each service:<br/>
+      <code>
+        networks: <br/>
+       &nbsp - blog-net
+      </code></p>
+     <p> and added to the bottom of the .yml:</p>
+      <code>
+        networks:<br/>
+        &nbsp - blog-net:
+      </code>
+      </li>
 </ul>
