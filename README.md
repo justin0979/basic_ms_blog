@@ -90,8 +90,6 @@ devServer: proxy: { "/posts": "http://0.0.0.0:4000"}
 
 Get `connect ECONNREFUSED 127.0.0.1:4005` from post submission and comment submission
 
-Event-bus' nodemon crashes when posts and comments are successfully created (not with docker, only worked from individual terminals).
-
 <ul>
   <li>Add <code>network_mode: host</code> to each service in docker-compose.yml and each service shows:<br/>
   <code>
@@ -117,3 +115,11 @@ Event-bus' nodemon crashes when posts and comments are successfully created (not
       </code>
       </li>
 </ul>
+
+## [nodemon] app crash [Solved]
+
+Event-bus' nodemon crashes when posts and comments are successfully created (not with docker, only worked from individual terminals).
+
+event-bus terminal [nodemon] app crash solution
+
+Fixed typos of `post` to `posts` and `post.comments.pusk` to `post.comments.push` and fixed incorrect `app.post('/post',...)` to `app.post('/events',...)`

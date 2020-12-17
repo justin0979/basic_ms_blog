@@ -12,20 +12,20 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-app.post("/posts", (req, res) => {
+app.post("/events", (req, res) => {
   const { type, data } = req.body;
 
   if (type === "PostCreated") {
     const { id, title } = data;
 
-    post[id] = { id, title, comments: [] };
+    posts[id] = { id, title, comments: [] };
   }
 
   if (type === "CommentCreated") {
     const { id, content, postId } = data;
 
     const post = posts[postId];
-    post.comments.pust({ id, content });
+    post.comments.push({ id, content });
   }
 
   console.log(posts);

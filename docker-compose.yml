@@ -9,8 +9,6 @@ services:
     volumes:
       - client_node_modules:/usr/app/node_modules
       - ./client:/usr/app
-    networks:
-      - blog-net
 
   posts:
     build:
@@ -21,8 +19,6 @@ services:
     volumes:
       - posts_node_modules:/usr/app/node_modules
       - ./posts:/usr/app
-    networks:
-      - blog-net
 
   comments:
     build:
@@ -33,8 +29,6 @@ services:
     volumes:
       - comments_node_modules:/usr/app/node_modules
       - ./comments:/usr/app
-    networks:
-      - blog-net
 
   event-bus:
     build:
@@ -45,8 +39,6 @@ services:
     volumes:
       - event-bus_node_modules:/usr/app/node_modules
       - ./event-bus:/usr/app
-    networks:
-      - blog-net
 
   query:
     build:
@@ -57,8 +49,6 @@ services:
     volumes:
       - query_node_modules:/usr/app/node_modules
       - ./query:/usr/app
-    networks:
-      - blog-net
 
 volumes:
   client_node_modules:
@@ -66,6 +56,3 @@ volumes:
   comments_node_modules:
   query_node_modules:
   event-bus_node_modules:
-
-networks:
-  blog-net:
