@@ -5,15 +5,29 @@ const axios = require("axios");
 const app = express();
 app.use(bodyParser.json());
 
-app.post("/events", (req, res) => {
+const events = []; // Not for production, ONLY practice
+
+app.post("/events", async (req, res) => {
   const event = req.body;
+
+  events.push(event); // Not for production, ONLY practice
 
   axios.post("http://localhost:4000/events", event); // posts
   axios.post("http://localhost:4001/events", event); // comments
-  axios.post("http://localhost:4002/events", event); // query
   axios.post("http://localhost:4003/events", event); // moderation
 
+  try {
+    await axios.post("http://localhost:4002/events", event); // query
+  } catch (e) {
+    console.log("Query service down");
+  }
+
   res.send({ status: "OK" });
+});
+
+// Not for production, ONLY for practice
+app.get("/events", (req, res) => {
+  res.send(events);
 });
 
 app.listen(4005, () => console.log("Events up on port 4005"));

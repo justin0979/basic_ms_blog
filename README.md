@@ -114,6 +114,11 @@ Get `connect ECONNREFUSED 127.0.0.1:4005` from post submission and comment submi
         &nbsp - blog-net:
       </code>
       </li>
+      <li>
+        Add to ports in docker-compose.yml:<br/>
+        <code>- "127.0.0.1:4005:4005"</code><br />
+        to all of the services.
+      </li>
 </ul>
 
 ## [nodemon] app crash [Solved]
@@ -123,3 +128,31 @@ Event-bus' nodemon crashes when posts and comments are successfully created (not
 event-bus terminal [nodemon] app crash solution
 
 Fixed typos of `post` to `posts` and `post.comments.pusk` to `post.comments.push` and fixed incorrect `app.post('/post',...)` to `app.post('/events',...)`
+
+## Event-bus server crashes when posting with query server down
+
+event-bus server crashes with `[nodemon] app crash ...`
+
+## Event-bus craah [Solved]
+
+In `event-bus/index.js`:<br />
+
+```javascript
+app.post("/events", async (req, res) => {
+  const event = req.body;
+
+  events.push(event);
+
+  axios.post("http://localhost:4000/events", event); // posts
+  axios.post("http://localhost:4001/events", event); // comments
+  axios.post("http://localhost:4003/events", event); // moderation
+
+  try {
+    await axios.post("http://localhost:4002/events", event); // query
+  } catch (e) {
+    console.log("Query server on port 4002 is down.");
+  }
+
+  res.send({ status: "OK" });
+});
+```
