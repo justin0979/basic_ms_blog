@@ -1,4 +1,4 @@
-FROM node:10-slim as base
+FROM node:14-slim as base
 WORKDIR /usr/app
 RUN chown -R node:node .
 COPY package*.json ./
