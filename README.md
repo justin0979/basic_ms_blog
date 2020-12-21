@@ -1,5 +1,11 @@
 # Simple Blog using basic microservice style
+
 Known issues I've run into are towards the bottom of this file.
+
+Kubernetes implementation is on `k8s` branch.<br />
+Using docker-compose is on `docker-compose` branch; however,
+docker-compose issues are listed below (these issues occured
+on my arch linux desktop, have not tried another OS).
 
 This is the first basic project from Stephen Grider's [Microservices with Node JS and React](https://www.udemy.com/course/microservices-with-node-js-and-react/)
 
