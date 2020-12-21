@@ -1,4 +1,5 @@
 # Simple Blog using basic microservice style
+Known issues I've run into are towards the bottom of this file.
 
 This is the first basic project from Stephen Grider's [Microservices with Node JS and React](https://www.udemy.com/course/microservices-with-node-js-and-react/)
 
