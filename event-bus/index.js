@@ -16,6 +16,9 @@ app.post("/events", async (req, res) => {
   axios.post("http://localhost:4001/events", event); // comments
   axios.post("http://localhost:4003/events", event); // moderation
 
+  // query service code is in try/catch b/c it is the service
+  // that can go down and request past events from this
+  // event-bus server.
   try {
     await axios.post("http://localhost:4002/events", event); // query
   } catch (e) {
