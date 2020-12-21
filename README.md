@@ -37,7 +37,7 @@ Bootstrap is used in the lectures, but I opted to use the same class names but p
 
 ## Axios post undefined [Solved]
 
-### Axios post undefined solution
+### Axios post undefined [Solution]
 
 In webpack.dev.js, remove
 
@@ -51,7 +51,7 @@ externals: {
 
 and that is all.
 
-## Failed attempts looking for axios post undefined cause
+### Failed attempts looking for axios post undefined cause [Solution above]
 
 After starting the client and attempting to submit a post by clicking the "Submit" button, get TypeError:
 
@@ -86,7 +86,7 @@ devServer: proxy: { "/posts": "http://0.0.0.0:4000"}
 </code></li>
 </ul>
 
-## UnhandledPromiseRejectionWarning for posting posts and comments
+## UnhandledPromiseRejectionWarning for posting posts and comments [Unsolved]
 
 Get `connect ECONNREFUSED 127.0.0.1:4005` from post submission and comment submission
 
@@ -129,12 +129,13 @@ event-bus terminal [nodemon] app crash solution
 
 Fixed typos of `post` to `posts` and `post.comments.pusk` to `post.comments.push` and fixed incorrect `app.post('/post',...)` to `app.post('/events',...)`
 
-## Event-bus server crashes when posting with query server down
+## Event-bus server crashes when posting with query server down [Solved]
 
 event-bus server crashes with `[nodemon] app crash ...`
 
-## Event-bus craah [Solved]
+### Event-bus crash [Solution]
 
+Without below solution, event-bus server outputs `[nodemon] app crash...`<br/>
 In `event-bus/index.js`:<br />
 
 ```javascript
