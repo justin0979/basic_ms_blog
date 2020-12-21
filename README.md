@@ -6,11 +6,11 @@ The client code is using a [development configuration](https://github.com/justin
 
 ## REST Client in place of Postman
 
-Postman is replaced with REST client (a VSC extention). This way, you do not have to install Postman.
+Postman is replaced with REST client (a Visual Studio Code extension). This way, you do not have to install Postman.
 
-Make any .http file (posts.http).
+Make any `.http file` (e.g. `posts.http`).
 
-For example, posts.http
+posts.http:
 
 ```sh
 POST http://localhost:4000/posts
@@ -31,7 +31,7 @@ Directly above the `POST` and `GET` there will be a small link (`Send Request`) 
 
 ## Styling is "custom"
 
-Bootstrap is used in the lectures, but I opted to use the same class names but practice my scss by implementing my own styling.
+Bootstrap is used in the lectures, but I opted to use the same class names but practice my 7-1 architecture and use of SASS by implementing my own styling.
 
 # Issues
 
