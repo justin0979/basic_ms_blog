@@ -164,3 +164,18 @@ app.post("/events", async (req, res) => {
   res.send({ status: "OK" });
 });
 ```
+
+## Kubernetes Issus
+
+### ErrImagePull [Solved]
+
+### ErrImagePull [Solution]
+
+Pushed docker image to docker hub. It still took 11 minutes for the pod to get status of `running`. During that 11 minutes, the status read `ImagePullBackOff`.
+
+Lecture "ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors" (Lecture 60 at this time) gives instructions on how to deal with this for local image pulls.
+
+<ul>
+  <li>add `imagePullPolicy: Never` gave:<br/>
+  `The Pod "posts" is invalid: spec: Forbidden: pod updates...`</li>
+</ul>
