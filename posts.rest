@@ -1,0 +1,15 @@
+// I'm new to this vim-rest-console
+// Use either POST after address,
+// OR use GET after address.
+// If use both, second request
+// will not go through.
+http://localhost:4000
+
+//POST /posts
+//{
+ // "title": "Is this working?"
+//}
+
+
+GET /posts
+
