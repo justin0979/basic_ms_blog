@@ -1,4 +1,5 @@
 // I'm new to this vim-rest-console
+// To run, press CNTL-j
 // Use either POST after address,
 // OR use GET after address.
 // If use both, second request

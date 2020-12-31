@@ -54,7 +54,7 @@ app.listen(4002, async () => {
   // Whenever query service comes online,
   // now is the time to make a request to the event-bus to get
   // a listing of all of the events emitted up to this point.
-  const res = await axios.get("http://localhost:4005/events");
+  const res = await axios.get("http://event-bus-srv:4005/events");
 
   for (let event of res.data) {
     console.log("Processing event:", event.type);
