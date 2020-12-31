@@ -165,7 +165,7 @@ app.post("/events", async (req, res) => {
 });
 ```
 
-## Kubernetes Issus
+## Kubernetes Issues
 
 ### ErrImagePull [Solved]
 

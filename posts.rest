@@ -3,13 +3,31 @@
 // OR use GET after address.
 // If use both, second request
 // will not go through.
-http://localhost:4000
 
-//POST /posts
-//{
- // "title": "Is this working?"
-//}
+// Attempted to use global section.
+// Worked twice, not consecutively all the
+// other hundred times say
+// "Cannot execute global section" or
+// "Missing host/block start"
 
+// For k8s, with linux, get ip with 
+// 'minikube ip'
+// then get NodePort port with
+// 'kubectl get services'
+// which will give a port beginning with 3
+// i.e. 30157
 
-GET /posts
+http://192.168.49.2:30157
+Content-Type: application/json
+
+//--
+
+POST /posts
+{
+ "title": "First"
+}
+
+//--
+
+//GET /posts
 
