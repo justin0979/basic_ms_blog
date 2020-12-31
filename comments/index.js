@@ -61,6 +61,7 @@ app.post("/events", async (req, res) => {
     });
   }
 
+  console.log("Event Received:", type);
   res.send({});
 });
 

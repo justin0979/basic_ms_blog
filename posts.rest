@@ -25,7 +25,7 @@ Content-Type: application/json
 
 POST /posts
 {
- "title": "First"
+ "title": "First k8s post"
 }
 
 //--
