@@ -1,6 +1,7 @@
 # Simple Blog using basic microservice style
 
 Known issues I've run into are towards the bottom of this file.
+Also, production is not setup.
 
 Kubernetes implementation is on `k8s` branch.<br />
 Using docker-compose is on `docker-compose` branch; however,
@@ -203,3 +204,51 @@ Lecture "ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors" (Lecture 6
   <li>add `imagePullPolicy: Never` gave:<br/>
   `The Pod "posts" is invalid: spec: Forbidden: pod updates...`</li>
 </ul>
+
+### Invalid Host Header after client-depl and ingress routes up [Solved]
+
+### Invalid Host Header after client-depl and ingress routes up [Solution]
+
+Added to `client/config/weback.dev.js`:
+
+```javascript
+devServer: {
+  disableHostCheck: true,
+  ...
+}
+```
+
+### Nginx 503/502 [Solved]
+
+### Nginx 503/502 [Solution]
+
+Stopped all deployments with
+
+```sh
+kubectl delete --all deployments
+```
+
+and also, just to be safe (not sure if it was necessary):
+
+```sh
+kubectl delete --all services
+```
+
+then restarted all deployments in `infra/k8s/`:
+
+```sh
+kubectl apply -f .
+```
+
+### Cross-Origin Request Blocked [Solved]
+
+### Cross-Origin Request Blocked [Solution]
+
+Since I haven't set up package.json for production use with webpack, I added to `webpack.dev.js`:
+
+```javascript
+devServer: {
+  ...,
+  public: "http://posts.com:80",
+}
+```

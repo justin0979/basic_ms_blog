@@ -6,6 +6,7 @@ const commonConfig = require("./webpack.common");
 module.exports = merge(commonConfig, {
   mode: "development",
   devServer: {
+    disableHostCheck: true,
     port: 3000,
     host: "0.0.0.0", // add for docker
     hot: true,
@@ -14,8 +15,13 @@ module.exports = merge(commonConfig, {
     },
     overlay: true,
     writeToDisk: true,
-    //public: "devconfig:80", // change devconfig if needed to whatever app is named (e.g. client:80), added with nginx use
-    //proxy: [{ context: ["/auth/google", "/api"], target: "http://localhost:5000" }] <--- use if working with backend, paths are just examples.
+    public: "posts.com:80", // change devconfig if needed to whatever app is named (e.g. client:80), added with nginx use
+    //    proxy: [
+    //      {
+    //        context: ["/posts", "/posts/create"],
+    //        target: "http://posts.com",
+    //      },
+    //    ], // <--- use if working with backend, paths are just examples.
   },
   module: {
     rules: [
