@@ -20,7 +20,7 @@ export default ({ postId }) => {
     <div>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="">New Comment</label>
+          <label htmlFor="">Enter New Comment:</label>
           <input
             type="text"
             className="form-control"

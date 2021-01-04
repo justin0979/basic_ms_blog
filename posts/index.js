@@ -41,6 +41,4 @@ app.post("/events", (req, res) => {
   res.send({});
 });
 
-app.listen(4000, () =>
-  console.log("Posts up on 4000 with version 6")
-);
+app.listen(4000, () => console.log("Posts up on port 4000"));

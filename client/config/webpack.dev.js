@@ -6,7 +6,7 @@ const commonConfig = require("./webpack.common");
 module.exports = merge(commonConfig, {
   mode: "development",
   devServer: {
-    disableHostCheck: true,
+    //disableHostCheck: true, // for 'Invalid Host Header', but 'public: "posts.com"' seems to take care of this
     port: 3000,
     host: "0.0.0.0", // add for docker
     hot: true,
@@ -14,8 +14,8 @@ module.exports = merge(commonConfig, {
       index: "index.html",
     },
     overlay: true,
-    writeToDisk: true,
-    public: "posts.com:80", // change devconfig if needed to whatever app is named (e.g. client:80), added with nginx use
+    //    writeToDisk: true,
+    public: "posts.com", // change devconfig if needed to whatever app is named (e.g. client:80), added with nginx use
     //    proxy: [
     //      {
     //        context: ["/posts", "/posts/create"],

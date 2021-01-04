@@ -209,6 +209,17 @@ Lecture "ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors" (Lecture 6
 
 ### Invalid Host Header after client-depl and ingress routes up [Solution]
 
+After trying to crash this app with skaffold, I commented out `disableHostCheck` and the app still is functional;
+however, commeting out:
+
+```javascript
+devServer: {
+  public: posts.com,
+}
+```
+
+caused `Invalid Host Header` to occur. So, with latest webpack version, I think that the above is only needed for this issue.
+
 Added to `client/config/weback.dev.js`:
 
 ```javascript
@@ -244,11 +255,11 @@ kubectl apply -f .
 
 ### Cross-Origin Request Blocked [Solution]
 
-Since I haven't set up package.json for production use with webpack, I added to `webpack.dev.js`:
+Since I'm using webpack's hmr, I added to `webpack.dev.js`:
 
 ```javascript
 devServer: {
   ...,
-  public: "http://posts.com:80",
+  public: "http://posts.com",
 }
 ```
