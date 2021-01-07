@@ -1,5 +1,12 @@
 # Simple Blog using basic microservice style
+
 Known issues I've run into are towards the bottom of this file.
+Also, production is not setup.
+
+Kubernetes implementation is on `k8s` branch.<br />
+Using docker-compose is on `docker-compose` branch; however,
+docker-compose issues are listed below (these issues occured
+on my arch linux desktop, have not tried another OS).
 
 This is the first basic project from Stephen Grider's [Microservices with Node JS and React](https://www.udemy.com/course/microservices-with-node-js-and-react/)
 
@@ -29,6 +36,30 @@ GET http://localhost:4000/posts
 Be sure to have the server running.
 
 Directly above the `POST` and `GET` there will be a small link (`Send Request`) which you click on to post or get data.
+
+## k8s
+
+### Start minikube
+
+run <br/>
+`minikube status`, if not running, then run<br />
+`minikube start`
+
+### enable ingress-nginx
+
+enable ingress-nginx with <br />
+`minikube addons enable ingress`
+
+### Verify ingress installation
+
+ensure nginx-ingress is running with<br />
+`kubectl get pods -n kube-system`<br />
+should see
+`ingress-nginx-controller-<stuff>`
+
+or, you can run<br />
+`kubectl get pods -n kube-system -l app.kubernetes.io/name=ingress-nginx --watch`<br />
+once verified, hit CNTL-c
 
 ## Styling is "custom"
 
@@ -157,4 +188,78 @@ app.post("/events", async (req, res) => {
 
   res.send({ status: "OK" });
 });
+```
+
+## Kubernetes Issues
+
+### ErrImagePull [Solved]
+
+### ErrImagePull [Solution]
+
+Pushed docker image to docker hub. It still took 11 minutes for the pod to get status of `running`. During that 11 minutes, the status read `ImagePullBackOff`.
+
+Lecture "ErrImagePull, ErrImageNeverPull and ImagePullBackoff Errors" (Lecture 60 at this time) gives instructions on how to deal with this for local image pulls.
+
+<ul>
+  <li>add `imagePullPolicy: Never` gave:<br/>
+  `The Pod "posts" is invalid: spec: Forbidden: pod updates...`</li>
+</ul>
+
+### Invalid Host Header after client-depl and ingress routes up [Solved]
+
+### Invalid Host Header after client-depl and ingress routes up [Solution]
+
+After trying to crash this app with skaffold, I commented out `disableHostCheck` and the app still is functional;
+however, commeting out:
+
+```javascript
+devServer: {
+  public: posts.com,
+}
+```
+
+caused `Invalid Host Header` to occur. So, with latest webpack version, I think that the above is only needed for this issue.
+
+Added to `client/config/weback.dev.js`:
+
+```javascript
+devServer: {
+  disableHostCheck: true,
+  ...
+}
+```
+
+### Nginx 503/502 [Solved]
+
+### Nginx 503/502 [Solution]
+
+Stopped all deployments with
+
+```sh
+kubectl delete --all deployments
+```
+
+and also, just to be safe (not sure if it was necessary):
+
+```sh
+kubectl delete --all services
+```
+
+then restarted all deployments in `infra/k8s/`:
+
+```sh
+kubectl apply -f .
+```
+
+### Cross-Origin Request Blocked [Solved]
+
+### Cross-Origin Request Blocked [Solution]
+
+Since I'm using webpack's hmr, I added to `webpack.dev.js`:
+
+```javascript
+devServer: {
+  ...,
+  public: "http://posts.com",
+}
 ```

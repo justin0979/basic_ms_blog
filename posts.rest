@@ -1,0 +1,34 @@
+// I'm new to this vim-rest-console
+// To run, press CNTL-j
+// Use either POST after address,
+// OR use GET after address.
+// If use both, second request
+// will not go through.
+
+// Attempted to use global section.
+// Worked twice, not consecutively all the
+// other hundred times say
+// "Cannot execute global section" or
+// "Missing host/block start"
+
+// For k8s, with linux, get ip with 
+// 'minikube ip'
+// then get NodePort port with
+// 'kubectl get services'
+// which will give a port beginning with 3
+// i.e. 30157
+
+http://192.168.49.2:30157
+Content-Type: application/json
+
+//--
+
+POST /posts
+{
+ "title": "First k8s post"
+}
+
+//--
+
+//GET /posts
+

@@ -1,7 +1,7 @@
 # The multi-stage process is not necessary.
 # It is only for practice and reference.
 
-FROM node:14-slim as base
+FROM node:14-slim as prod
 WORKDIR /usr/app
 # Change ownership from root to node for this directory down.
 RUN chown -R node:node .
@@ -11,8 +11,8 @@ USER node
 RUN npm install --only=production && npm cache clean --force
 COPY --chown=node:node . .
 
-FROM base as dev 
-RUN npm i --only=development
+FROM prod as dev 
+RUN npm i --only=development && npm cache clean --force
 COPY --chown=node:node . .
 EXPOSE 3000
 CMD ["npm", "start"]

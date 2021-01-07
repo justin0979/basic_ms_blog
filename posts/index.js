@@ -10,11 +10,12 @@ app.use(cors());
 
 const posts = {};
 
+// Only used to test end point once ingress-nginx setup
 app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
 
@@ -23,7 +24,7 @@ app.post("/posts", async (req, res) => {
     title,
   };
 
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://event-bus-srv:4005/events", {
     type: "PostCreated",
     data: {
       id,
@@ -40,4 +41,4 @@ app.post("/events", (req, res) => {
   res.send({});
 });
 
-app.listen(4000, () => console.log("Posts up on 4000"));
+app.listen(4000, () => console.log("Posts up on port 4000"));
