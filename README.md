@@ -118,7 +118,7 @@ devServer: proxy: { "/posts": "http://0.0.0.0:4000"}
 </code></li>
 </ul>
 
-## UnhandledPromiseRejectionWarning for posting posts and comments [Unsolved]
+## UnhandledPromiseRejectionWarning for posting posts and comments with docker-compose [Unsolved]
 
 Get `connect ECONNREFUSED 127.0.0.1:4005` from post submission and comment submission
 
